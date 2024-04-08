@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function getMovies() {
     fetch("http://localhost:3000/films")
-    .then(res => res.json())
-    .then(movies => {
-        movies.forEach(movie => {listAllMovies(movie)})
-        const firstMovie = document.querySelector("#id1");
-        firstMovie.dispatchEvent(new Event("click"));
-    })
+        .then(res => res.json())
+        .then(movies => {
+            movies.forEach(movie => { listAllMovies(movie) })
+            const firstMovie = document.querySelector("#id1");
+            firstMovie.dispatchEvent(new Event("click"));
+        })
 }
 
 function listAllMovies(movie) {
@@ -21,7 +21,7 @@ function listAllMovies(movie) {
     ul.appendChild(li);
     li.classList.add("film");
     li.classList.add('item');
-    li.addEventListener("click", () => {clickMovie(movie)})
+    li.addEventListener("click", () => { clickMovie(movie) })
 }
 
 function clickMovie(movie) {
@@ -30,7 +30,7 @@ function clickMovie(movie) {
     poster.alt = movie.title;
     const info = document.querySelector("#showing");
     info.querySelector("#title").textContent = movie.title;
-    info.querySelector("#runtime").textContent = movie.runtime+" minutes";
+    info.querySelector("#runtime").textContent = movie.runtime + " minutes";
     info.querySelector("#film-info").textContent = movie.description;
     info.querySelector("#showtime").textContent = movie.showtime;
     info.querySelector("#ticket-num").textContent = movie.capacity - movie.tickets_sold + " remaining tickets";
